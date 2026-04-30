@@ -1,0 +1,88 @@
+# ============================================================
+#  Network KB — .gitignore
+#  Keeps credentials, live configs, and secrets off GitHub
+# ============================================================
+
+# ----- Credentials & Secrets --------------------------------
+.env
+.env.*
+!.env.example          # the template IS safe to commit
+secrets.yml
+secrets.yaml
+vault.yml
+vault.yaml
+*_password*
+*_passwords*
+*_secret*
+*credentials*
+
+# ----- Certificates & Keys ----------------------------------
+*.pem
+*.key
+*.pfx
+*.p12
+*.crt
+*.cer
+id_rsa
+id_rsa.pub
+id_ed25519
+id_ed25519.pub
+*.ppk
+
+# ----- Live Device Backups / Running Configs ----------------
+# Commit TEMPLATES, not actual device configs with real IPs/creds
+backups/
+backup-*/
+live-configs/
+running-configs/
+*-running-config.txt
+*-startup-config.txt
+*_backup.*
+
+# ----- Ansible Secrets & Live Inventory ---------------------
+inventory/hosts          # real IPs live here
+inventory/production/
+inventory/prod/
+group_vars/all/vault.yml
+host_vars/*/vault.yml
+*.vault
+ansible.cfg              # may contain auth paths
+
+# ----- Python & Virtual Envs --------------------------------
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+*.egg-info/
+
+# ----- OS & Editor Junk -------------------------------------
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.vscode/settings.json   # keep extensions.json, not personal settings
+
+# ----- Logs & Temp Files ------------------------------------
+*.log
+*.tmp
+*.bak
+logs/
+tmp/
+temp/
+
+# ----- Terraform (if you use it) ----------------------------
+*.tfstate
+*.tfstate.*
+.terraform/
+terraform.tfvars         # contains real values
+!terraform.tfvars.example
+
+# ----- SSH Config (may include hostnames) -------------------
+.ssh/
+ssh_config
+known_hosts
